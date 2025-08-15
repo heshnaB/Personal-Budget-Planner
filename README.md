@@ -7,3 +7,7 @@ The app includes the following features:
 - Monthly Summary (total income, total expenses, balance)
 - Charts (spending by category, monthly trend)
 - Persistent Storage (local database or JSON file)
+
+
+⚠️ License: All Rights Reserved  
+This code may NOT be copied, modified, or used to create any applications or derivative works without explicit permission.
