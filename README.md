@@ -31,6 +31,9 @@ The app includes the following features:
 
 Tech Stack: Python (Flask) + SQLite + HTML/CSS/Bootstrap
 
+Data Structure:
+ -  To add a transaction, we need an id (unique identifier), type (is it an income or an expense), amount (amount of money), category (groceries, rent, salary, etc), date, and other notes. -> create an array of objects with HTML
+
 
 
 ⚠️ License: All Rights Reserved  
