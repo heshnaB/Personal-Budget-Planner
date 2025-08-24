@@ -1,2 +1,44 @@
-#Linking the link to the script.js file.
-<script src="script.js"></script>
+<!DOCTYPE html>
+<html lang = "en"> 
+    <head>
+        <meta charset = "UTF-8">
+        <title>Budget Planner </title>
+    </head>
+    <body>
+        <h1>Personal Budget Planner</h1>
+
+        <form id="transaction-form">
+            <label>Type:
+                <select id = "type">
+                    <option value = "income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+            </label><br>
+
+            <label>Amount:
+                <input type="float" id="amount" required>
+            </label><br>
+
+            <label>Category:
+                <input type="text" id="category" required>
+            </label><br>
+
+            <label>Date:
+                <input type="date" id="date" required>
+            </label><br>
+
+            <label>Notes:
+                <input type="text" id="notes">
+            </label><br>
+
+            <button type="submit">Add Transaction</button>
+        </form>
+
+        <h2>Transactions</h2>
+        <div id="transaction-list"></div>
+
+        <!--Linking the link to the script.js file. -->
+        <script src="script.js"></script>
+    </body>
+</html>
+
