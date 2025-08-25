@@ -35,7 +35,24 @@
         </form>
 
         <h2>Transactions</h2>
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-list"></tbody>
+        </table>
         <div id="transaction-list"></div>
+
+        <h2>Summary</h2>
+        <p>Total Income: $<span id="total-income">0</span></p>
+        <p>Total Expenses: $<span id="total-expenses">0</span></p>
+        <p>Balance: $<span id="balance">0</span></p>
 
         <!--Linking the link to the script.js file. -->
         <script src="script.js"></script>
