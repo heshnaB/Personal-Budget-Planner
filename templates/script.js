@@ -1,3 +1,60 @@
+// ----Login System ------
+let currentUser = null;
+
+// Login function
+function login() {
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value;
+
+    if (!username || !password) {
+        alert("Please enter username and password");
+        return;
+    }
+
+    //Check if user exists in local storage
+    const savedUser = JSON.parse(localStorage.getItem(username));
+
+    if (savedUser && savedUser.password === password) {
+        currentUser = username;
+        alert("Login successful!");
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("app-container").style.display = "block";
+
+        // Load user's transactions
+        loadData();
+    
+    } else {
+        alert("Invalid credentials. Try again or register. ")
+    }
+}
+// Register function
+function register() {
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value;
+
+    if (!username || !password) {
+        alert("Please enter username and password");
+        return;
+    }
+
+    const newUser = {
+        password: password,
+        transactions: []
+    };
+
+    localStorage.setItem(username, JSON.stringify(newUser));
+    alert("Registratiom successful! You can now log in.");
+}
+    function logout() {
+        currentUser = null;
+        document.getElementById("app-container").style.display = "none";
+        document.getElementById("login-container").style.display = "block";
+
+    }
+
+
+
+
 //  HTML form submission handling.
 // 1. Create the transaction array to store all the transaction objects.
 let transactions = [];
@@ -30,7 +87,7 @@ form.addEventListener("submit", function(event) {
     //4. Add to array and clear form
     transactions.push(transaction);
     //form.requestFullscreen();
-    console.log(transactions);
+    saveData();
 
     //5. Render updated list
     renderTransactions();
@@ -57,7 +114,7 @@ function renderTransactions() {
             <td>${tx.category}</td>
             <td>${tx.notes}</td>
             <td>
-                <button oneclick="editTransaction(${index})">Edit</button>
+                <button onclick="editTransaction(${index})">Edit</button>
                 <button onclick="deleteTransaction(${index})">Delete</button>
             </td
         `;
@@ -110,4 +167,26 @@ function editTransaction(index) {
     saveData();
     renderTransactions();
     updateSummary();
+}
+
+function saveData() {
+    if (currentUser) {
+        const savedUser = JSON.parse(localStorage.getItem(currentUser)) || {};
+        savedUser.password = savedUser.password || "";
+        savedUser.transactions = transactions;
+        localStorage.setItem(currentUser, JSON.stringify(savedUser));
+    }
+}
+
+function loadData() { 
+    if (currentUser) {
+        const savedUser = JSON.parse(localStorage.getItem(currentUser));
+        if (savedUser && savedUser.transactions) {
+            transactions = savedUser.transactions;
+        } else {
+            transactions = [];
+        }
+            renderTransactions();
+            updateSummary();
+        }
 }

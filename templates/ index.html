@@ -7,6 +7,19 @@
     <body>
         <h1>Personal Budget Planner</h1>
 
+        <!-- Login Section -->
+         <div id = "login-container">
+            <h2>Login</h2>
+            <label>Username: <input type = "text" id = "login-username"></label><br>
+            <label> Password: <input type = "password" id= "login-password"></label><br>
+            <button onclick = "login()">Login</button>
+            <button onclick = "register()">register</button>
+        </div>
+
+
+        <!-- App secion (hidden until login)-->
+         <div id = "app-container" style = "display:none;">
+            <button onclick = "logout()">Logout</button>
         <form id="transaction-form">
             <label>Type:
                 <select id = "type">
@@ -53,7 +66,7 @@
         <p>Total Income: $<span id="total-income">0</span></p>
         <p>Total Expenses: $<span id="total-expenses">0</span></p>
         <p>Balance: $<span id="balance">0</span></p>
-
+        </div>
         <!--Linking the link to the script.js file. -->
         <script src="script.js"></script>
     </body>
