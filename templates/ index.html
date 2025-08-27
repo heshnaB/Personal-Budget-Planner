@@ -7,8 +7,9 @@
     <body>
         <h1>Personal Budget Planner</h1>
 
+        
         <!-- Login Section -->
-         <div id = "login-container">
+         <div id = "login-container" style="display:none;">
             <h2>Login</h2>
             <label>Username: <input type = "text" id = "login-username"></label><br>
             <label> Password: <input type = "password" id= "login-password"></label><br>
@@ -16,10 +17,15 @@
             <button onclick = "register()">register</button>
         </div>
 
+        <button id="show-login-btn" onclick="toggleLogin()">Login</button>
 
-        <!-- App secion (hidden until login)-->
-         <div id = "app-container" style = "display:none;">
-            <button onclick = "logout()">Logout</button>
+
+        <!-- App section-->
+         <div id = "app-container">
+
+         <button id = "save-data-btn" onclick = "savePrompt()">Save My Data</button>
+         <button id = "logout-btn" onclick = "logout()">Logout</button>
+            
         <form id="transaction-form">
             <label>Type:
                 <select id = "type">

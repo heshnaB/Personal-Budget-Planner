@@ -175,6 +175,8 @@ function saveData() {
         savedUser.password = savedUser.password || "";
         savedUser.transactions = transactions;
         localStorage.setItem(currentUser, JSON.stringify(savedUser));
+    } else {
+        alert("No user logged in. Cannot save data.");
     }
 }
 
@@ -189,4 +191,86 @@ function loadData() {
             renderTransactions();
             updateSummary();
         }
+}
+
+function toggleLogin() {
+    const loginDiv = document.getElementById("login-container");
+    loginDiv.style.display = loginDiv.style.display === "none" ? "block" : "none";
+}
+
+function savePrompt() {
+    const saveBtn = document.getElementById("save-data-btn");
+
+    if (!currentUser) {
+        alert("You need to log in to save your data");
+        document.getElementById("login-container").style.display = "block";
+    } else {
+        saveData();
+        alert("Data saved successfully!");
+        saveBtn.style.display = "none";
+    }
+}
+
+function logout() {
+    currentUser = null;
+    alert("You are now logged out.");
+
+    transactions = [];
+    renderTransactions();
+    updateSummary();
+
+    updateButtonVisibility();
+}
+
+function updateButtonVisibility() {
+    const saveBtn = document.getElementById("save-data-btn");
+    const logoutBtn = document.getElementById("logout-btn");
+    const showLoginBtn = document.getElementById("show-login-btn");
+
+    if (currentUser) {
+        saveBtn.style.display = "inline-block";
+        logoutBtn.style.display = "inline-block";
+        showLoginBtn.style.display = "none";
+        document.getElementById("login-container").style.display = "none";
+    } else {
+        saveBtn.style.display = "inline-block";
+        logoutBtn.style.display = "none";
+        showLoginBtn.style.display = "inline-block";
+    }
+}
+
+function login() {
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value;
+
+    if (!username || !password) {
+        alert("Please enter username and password");
+        return;
+    }
+
+    //Check if user exists in local storage
+    const savedUser = JSON.parse(localStorage.getItem(username));
+
+    if (savedUser && savedUser.password === password) {
+        currentUser = username;
+        alert("Login successful!");
+        document.getElementById("login-container").style.display = "none";
+
+        // Load user's transactions
+        loadData();
+        updateButtonVisibility();
+    
+    } else {
+        alert("Invalid credentials. Try again or register. ")
+    }
+}
+
+function savePrompt() {
+    if (!currentUser) {
+        alert("You need to log in to save your data");
+        document.getElementById("login-container").style.display = "block";
+    } else {
+        saveData();
+        alert("Data saved successfully!");
+    }
 }
