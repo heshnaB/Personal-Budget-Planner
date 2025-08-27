@@ -229,7 +229,7 @@ function updateButtonVisibility() {
 
     if (currentUser) {
         saveBtn.style.display = "inline-block";
-        logoutBtn.style.display = "inline-block";
+        logoutBtn.style.display = "inline-block";s
         showLoginBtn.style.display = "none";
         document.getElementById("login-container").style.display = "none";
     } else {
