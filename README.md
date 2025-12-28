@@ -1,5 +1,5 @@
 # Personal-Budget-Planner
-
+```text
 Structure:
 Personal-Budget-Planner/
 |    app.py
@@ -18,6 +18,7 @@ Personal-Budget-Planner/
 |___ data/
      |___ budget.db
      |
+```
 
 Purpose:
 The following project is a simple personal budget planner and it is intended to demonstrate my programming skills.
