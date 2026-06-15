@@ -12,10 +12,7 @@ Personal-Budget-Planner/
 |___ static/
 |    |__ style.css
 |    |
-|
-|___ data/
-     |___ budget.db
-     |
+
 ```
 
 Purpose:
