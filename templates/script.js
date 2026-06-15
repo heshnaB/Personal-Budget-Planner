@@ -1,32 +1,6 @@
 // ----Login System ------
 let currentUser = null;
 
-// Login function
-function login() {
-    const username = document.getElementById("login-username").value.trim();
-    const password = document.getElementById("login-password").value;
-
-    if (!username || !password) {
-        alert("Please enter username and password");
-        return;
-    }
-
-    //Check if user exists in local storage
-    const savedUser = JSON.parse(localStorage.getItem(username));
-
-    if (savedUser && savedUser.password === password) {
-        currentUser = username;
-        alert("Login successful!");
-        document.getElementById("login-container").style.display = "none";
-        document.getElementById("app-container").style.display = "block";
-
-        // Load user's transactions
-        loadData();
-    
-    } else {
-        alert("Invalid credentials. Try again or register. ")
-    }
-}
 // Register function
 function register() {
     const username = document.getElementById("login-username").value.trim();
@@ -49,6 +23,16 @@ function register() {
         currentUser = null;
         document.getElementById("app-container").style.display = "none";
         document.getElementById("login-container").style.display = "block";
+
+    
+        alert("You are now logged out.");
+
+        transactions = [];
+        renderTransactions();
+        updateSummary();
+
+        updateButtonVisibility();
+
 
     }
 
@@ -211,16 +195,7 @@ function savePrompt() {
     }
 }
 
-function logout() {
-    currentUser = null;
-    alert("You are now logged out.");
 
-    transactions = [];
-    renderTransactions();
-    updateSummary();
-
-    updateButtonVisibility();
-}
 
 function updateButtonVisibility() {
     const saveBtn = document.getElementById("save-data-btn");
@@ -229,7 +204,7 @@ function updateButtonVisibility() {
 
     if (currentUser) {
         saveBtn.style.display = "inline-block";
-        logoutBtn.style.display = "inline-block";s
+        logoutBtn.style.display = "inline-block";
         showLoginBtn.style.display = "none";
         document.getElementById("login-container").style.display = "none";
     } else {
@@ -265,12 +240,3 @@ function login() {
     }
 }
 
-function savePrompt() {
-    if (!currentUser) {
-        alert("You need to log in to save your data");
-        document.getElementById("login-container").style.display = "block";
-    } else {
-        saveData();
-        alert("Data saved successfully!");
-    }
-}
