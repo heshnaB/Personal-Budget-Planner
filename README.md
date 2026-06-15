@@ -2,8 +2,6 @@
 ```text
 Structure:
 Personal-Budget-Planner/
-|    app.py
-|    requirements.txt
 |    README.md
 |
 |___ templates/
@@ -21,22 +19,33 @@ Personal-Budget-Planner/
 ```
 
 Purpose:
-The following project is a simple personal budget planner and it is intended to demonstrate my programming skills.
+This project is a simple personal budget planner web application designed to demonstrate front-end development skills using JavaScript. It allows users to track income and expenses with persistent data stored in the browser using Local Storage.
 
 The app includes the following features:
-- Add Income/expenses (form with amount, date, category, notes)
-- View transaction List (sortable, filterable)
-- Monthly Summary (total income, total expenses, balance)
-- Charts (spending by category, monthly trend)
-- Persistent Storage (local database or JSON file)
+- Add income and expense transactions through a form
+- View a dynamic transaction list
+- Edit and delete transactions
+- View real-time financial summary (total income, expenses, balance)
+- Persistent storage using browser Local Storage
+- Basic user login system (client-side only)
 
-Tech Stack: SQLite + HTML/CSS/Bootstrap
+Tech Stack:
+- HTML
+- CSS
+- JavaScript
+- Local Storage (browser-based persistence)
 
 Data Structure:
- -  To add a transaction, we need an id (unique identifier), type (is it an income or an expense), amount (amount of money), category (groceries, rent, salary, etc), date, and other notes. -> create an array of objects with HTML
+Each transaction is stored as a JavaScript object:
+- id (unique identifier)
+- type (income or expense)
+- amount
+- category
+- date
+- notes
 
-This project focuses primarily on backend logic and functionality rather than visual design. The layout is simple and functional to highlight data handling, transaction management, and user login features. Styling was not a priority.
-
-
-⚠️ License: All Rights Reserved  
-This code may NOT be copied, modified, or used to create any applications or derivative works without explicit permission.
+Future Improvements
+- Add backend using Flask or Django
+- Replace Local Storage with SQLite or PostgreSQL
+- Add charts and data visualization
+- Improve authentication with secure login system
